@@ -2,13 +2,14 @@
 #define LUAEVENT_H
 
 #include <QDateTime>
+#include <QSettings>
 
 
 //------------------------------------------------------------------------------
 struct LuaEvent {
     uint        eventId;
     QDateTime   timeStamp;
-    QObject*    dataParm;
+    QSettings*  dataParm;
 };
 
 //------------------------------------------------------------------------------

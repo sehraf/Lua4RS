@@ -25,10 +25,7 @@ bool LuaTriggerTimerInterval::isTriggered (LuaEvent luaevent)
         }
 
         // is it our big moment?
-        QDateTime timeWindow = _lastRun;
-        timeWindow.addSecs(_timerInterval);
-
-        if( timeWindow <= luaevent.timeStamp  )
+        if( _lastRun.addSecs(_timerInterval) <= luaevent.timeStamp  )
         {
             _lastRun = QDateTime::currentDateTime();
             return true;

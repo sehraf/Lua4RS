@@ -23,11 +23,14 @@ void Lua4RSTickThread::run()
     while(isRunning())
     {
         // tick each X second
-        if(_lastRun + tickIntervalInSeconds <= time(0))
+        // wait secondsToStarUpEvent to let things settle down
+        if(_startUpEventTriggered && _lastRun + tickIntervalInSeconds <= time(0))
         {
             LuaEvent e;
             e.eventId = L4R_TIMERTICK;
             e.timeStamp = QDateTime::currentDateTime();
+            e.dataParm = new QSettings();
+            e.dataParm->setValue("testKey", "testValue");
 
             LuaCore::getInstance()->processEvent(e);
 

@@ -232,6 +232,12 @@ void LuaCore::runLuaByNameWithParams(const QString& name, parameterMap paramMap)
 void LuaCore::runLuaByEvent(LuaContainer* container, const LuaEvent& event)
 {
     // do some magic with parameters from event
+    if(event.dataParm != NULL && event.dataParm->allKeys().size() > 0)
+    {
+        std::cout << "[Lau] events params:" << std::endl;
+        foreach(QString s, event.dataParm->allKeys())
+            std::cout << "[Lua]  - " << s.toStdString() << ": " << event.dataParm->value(s).toString().toStdString() << std::endl;
+    }
 
     runLuaByString(container->getCode());
 }
