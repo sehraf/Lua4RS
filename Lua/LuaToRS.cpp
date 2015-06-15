@@ -95,8 +95,12 @@ extern "C" {
         std::string output = "";
         if(argc > 0)
             for (int n = 1; n <= argc; ++n ) {
-                const std::string s = lua_tostring(L, n);
-                output += s;
+				try{
+					const std::string s = lua_tostring(L, n);
+					output += s;
+				}catch(...){
+					output += "error converting to string";
+				}
                 if(n < argc)
                     output += '\t';
             }
