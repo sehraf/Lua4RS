@@ -1,3 +1,8 @@
+
+**DEPRECATED**
+
+*Lua4RS is not actively developed anymore and may only receive maintanance updates. Please consider switching to the json REST api instead. You can find some examples here https://github.com/sehraf/python-retroshare*
+
 Lua4RS
 ======
 
